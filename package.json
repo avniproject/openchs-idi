@@ -1,0 +1,32 @@
+{
+  "name": "openchs-idi",
+  "version": "0.0.1",
+  "description": "",
+  "main": "IDI.js",
+  "files": [
+    "token.js",
+    "httpClient.js",
+    "IDI.js",
+    "Makefile"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/OpenCHS/openchs-idi.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OpenCHS/openchs-idi/issues"
+  },
+  "homepage": "https://github.com/OpenCHS/openchs-idi#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "grunt": "^1.0.3",
+    "amazon-cognito-identity-js": "1.28.0",
+    "babel-core": "6",
+    "babel-loader": "7.1.5",
+    "webpack": "^4.13.0",
+    "rules-config": "github:openchs/rules-config#c333f0fc4fa99d29e42c8257bf007edef1bbcf41"
+  }
+}
