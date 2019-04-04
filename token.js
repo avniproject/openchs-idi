@@ -1,4 +1,5 @@
 var Cognito = require('amazon-cognito-identity-js');
+global.navigator = () => null;
 
 const tokenCache = {};
 

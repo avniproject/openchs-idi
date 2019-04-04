@@ -74,7 +74,7 @@ class IDI {
     }
 
     get serverUrl() {
-        return this.conf.secrets[this.env] || 'http://localhost:8021';
+        return this.conf.secrets[this.env].serverUrl || 'http://localhost:8021';
     }
 
     url(endpoint) {
