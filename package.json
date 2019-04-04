@@ -6,6 +6,7 @@
   "files": [
     "token.js",
     "httpClient.js",
+    "prompt.js",
     "IDI.js",
     "Makefile"
   ],

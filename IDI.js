@@ -1,5 +1,6 @@
 const {postAllRules} = require("rules-config/infra");
 const HttpClient = require('./httpClient');
+const prompt = require('./prompt');
 
 class IDI {
     constructor() {
@@ -55,15 +56,22 @@ class IDI {
         });
 
         const idi = this;
-        grunt.registerMultiTask('deploy', "Everything happens here.", function () {
-            const done = this.async();
-            if (this.target === 'all') {
+        const deploy = (target, done) => {
+            if (target === 'all') {
                 idi.logger(`Target Environment: ${idi.env}`);
                 idi.deployAll().then(done, done);
             } else {
                 idi.logger(`Target Environment: ${idi.env}`);
-                idi.deploy(this.target).then(done, done);
+                idi.deploy(target).then(done, done);
             }
+        };
+        grunt.registerMultiTask('deploy', "Everything happens here.", function () {
+            const done = this.async();
+            if (idi.env !== 'dev') {
+                prompt(idi.env, ()=> deploy(this.target, done), () => idi.logger(`Exiting w/o deployment`));
+                return ;
+            }
+            deploy(this.target, done);
         });
 
         grunt.registerTask('default', 'grunt --help\n', grunt.help.display);
