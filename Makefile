@@ -30,7 +30,7 @@ _formMappings:; $(call _grunt,formMappings)
 _checklistDetails:; $(call _grunt,checklistDetails)
 _rules:; $(call _grunt,rules)
 
-deploy-dev-all: _dev _all
+deploy-dev-all: create_org _dev _all
 deploy-dev-adminUsers: _dev _adminUsers
 deploy-dev-locations: _dev _locations
 deploy-dev-catchments: _dev _catchments
@@ -101,3 +101,6 @@ deploy-prod-formAdditions: _prod _formAdditions
 deploy-prod-formMappings: _prod _formMappings
 deploy-prod-checklistDetails: _prod _checklistDetails
 deploy-prod-rules: _prod _rules
+
+create_org:; psql -U$(su) openchs < create_organisation.sql
+create_views:; psql -U$(su) openchs < create_views.sql
