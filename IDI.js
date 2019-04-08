@@ -160,6 +160,7 @@ class IDI {
             'programs',
             'operationalEncounterTypes',
             'operationalPrograms',
+            'operationalSubjectTypes',
             'forms',
             'formDeletions',
             'formAdditions',
