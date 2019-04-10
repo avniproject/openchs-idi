@@ -22,12 +22,11 @@
   },
   "homepage": "https://github.com/OpenCHS/openchs-idi#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "grunt": "^1.0.3",
     "amazon-cognito-identity-js": "1.28.0",
+    "axios": "^0.18.0",
     "babel-core": "6",
     "babel-loader": "7.1.5",
-    "webpack": "^4.13.0",
-    "rules-config": "github:openchs/rules-config#68b0da32c98fb599d19b7266f78a2ec3eb10e29c"
+    "grunt": "^1.0.3",
+    "webpack": "^4.13.0"
   }
 }

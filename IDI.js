@@ -1,4 +1,3 @@
-const {postAllRules} = require("rules-config/infra");
 const HttpClient = require('./httpClient');
 const prompt = require('./prompt');
 
@@ -16,14 +15,15 @@ class IDI {
     postRules(asUser) {
         return {
             asUser,
-            run: (files, user) => HttpClient.getToken(user).then(token=> postAllRules(user, files[0], this.serverUrl, token))
+            run: (files, user) => HttpClient.getToken(user).then(token=> this.rulesConfig.postAllRules(user, files[0], this.serverUrl, token))
         }
     }
 
-    configure(grunt, configuration) {
+    configure(grunt, configuration, rulesConfig) {
         const req = this.req.bind(this);
         this.grunt = grunt;
         this.conf = configuration;
+        this.rulesConfig = rulesConfig;
         HttpClient.load(this.conf.secrets, this.env);
         grunt.initConfig({
             deploy: {
