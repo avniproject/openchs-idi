@@ -28,6 +28,6 @@
     "babel-core": "6",
     "babel-loader": "7.1.5",
     "webpack": "^4.13.0",
-    "rules-config": "github:openchs/rules-config#c333f0fc4fa99d29e42c8257bf007edef1bbcf41"
+    "rules-config": "github:openchs/rules-config#build"
   }
 }
