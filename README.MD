@@ -7,6 +7,15 @@ Example Implementation:
 
 Both are needed. Makefile provided by openchs-idi is a thin wrapper to provide quick bash auto complete.
 
+To upgrade `rules-config` do the following in sdk and push it to master:
+```
+yarn add -D github:openchs/rules-config#build
+```
+then in the implementation
+```
+yarn add -D github:openchs/openchs-idi#master
+```
+
 Caution:
 * Implementations should not rely on specific version of `rules-config` package.
 * Implementations should always take rule-config installed by openchs-idi
