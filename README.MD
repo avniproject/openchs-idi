@@ -9,11 +9,11 @@ Both are needed. Makefile provided by openchs-idi is a thin wrapper to provide q
 
 To upgrade `rules-config` do the following in sdk and push it to master:
 ```
-yarn add -D github:openchs/rules-config#build
+yarn add github:openchs/rules-config#build
 ```
 then in the implementation
 ```
-yarn add -D github:openchs/openchs-idi#master
+yarn add github:openchs/openchs-idi#master
 ```
 
 Caution:
