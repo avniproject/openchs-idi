@@ -142,10 +142,10 @@ class IDI {
         }, Promise.resolve());
     }
 
-    static configure(configuration) {
+    static configure(configuration, rulesConfig) {
         const idi = new IDI();
         return function (grunt) {
-            idi.configure(grunt, configuration);
+            idi.configure(grunt, configuration, rulesConfig);
         }
     }
 
