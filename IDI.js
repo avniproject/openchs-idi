@@ -110,7 +110,7 @@ class IDI {
 
         return requestSeq
             .then((res) => {
-                res.data && logger(res.data);
+                res && res.data && logger(res.data);
             })
             .catch((err) => {
                 logger(err);
@@ -127,7 +127,7 @@ class IDI {
         const fileInfo = this.conf.files[taskName];
         const files = this.grunt.util.kindOf(fileInfo) === 'object' ? fileInfo[this.env] : fileInfo;
         const user = this.conf[taskDef.asUser];
-        return taskDef.run(files, user);
+        return taskDef.run(files || [], user);
     }
 
     deployAll() {
