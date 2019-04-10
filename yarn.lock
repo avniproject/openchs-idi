@@ -4250,7 +4250,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-"rules-config@github:openchs/rules-config#build":
+"rules-config@github:openchs/rules-config#68b0da32c98fb599d19b7266f78a2ec3eb10e29c":
   version "0.0.1"
   resolved "https://codeload.github.com/openchs/rules-config/tar.gz/68b0da32c98fb599d19b7266f78a2ec3eb10e29c"
   dependencies:
