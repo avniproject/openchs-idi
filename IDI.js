@@ -51,7 +51,7 @@ class IDI {
             }
         });
 
-        ['dev', 'staging', 'prod', 'uat'].forEach((env) => {
+        ['dev', 'staging', 'prod', 'uat', 'prerelease'].forEach((env) => {
             grunt.registerTask(env, `Use env: ${env.toUpperCase()}`, () => grunt.option('target', env));
         });
 
