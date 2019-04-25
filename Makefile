@@ -8,6 +8,7 @@ file:=
 _dev:; $(eval _env:=dev)
 _uat:; $(eval _env:=uat)
 _staging:; $(eval _env:=staging)
+_prerelease:; $(eval _env:=prerelease)
 _prod:; $(eval _env:=prod)
 
 _grunt = grunt deploy:$(1) --target=$(_env) $(if $(file),--only-file=$(file))
@@ -65,6 +66,24 @@ deploy-staging-formAdditions: _staging _formAdditions
 deploy-staging-formMappings: _staging _formMappings
 deploy-staging-checklistDetails: _staging _checklistDetails
 deploy-staging-rules: _staging _rules
+
+deploy-prerelease-all: _prerelease _all
+deploy-prerelease-adminUsers: _prerelease _adminUsers
+deploy-prerelease-locations: _prerelease _locations
+deploy-prerelease-catchments: _prerelease _catchments
+deploy-prerelease-users: _prerelease _users
+deploy-prerelease-concepts: _prerelease _concepts
+deploy-prerelease-encounterTypes: _prerelease _encounterTypes
+deploy-prerelease-programs: _prerelease _programs
+deploy-prerelease-operationalEncounterTypes: _prerelease _operationalEncounterTypes
+deploy-prerelease-operationalPrograms: _prerelease _operationalPrograms
+deploy-prerelease-operationalSubjectTypes: _prerelease _operationalSubjectTypes
+deploy-prerelease-forms: _prerelease _forms
+deploy-prerelease-formDeletions: _prerelease _formDeletions
+deploy-prerelease-formAdditions: _prerelease _formAdditions
+deploy-prerelease-formMappings: _prerelease _formMappings
+deploy-prerelease-checklistDetails: _prerelease _checklistDetails
+deploy-prerelease-rules: _prerelease _rules
 
 deploy-uat-all: _uat _all
 deploy-uat-adminUsers: _uat _adminUsers
