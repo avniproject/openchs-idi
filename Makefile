@@ -17,6 +17,7 @@ _all:; $(call _grunt,all)
 _adminUsers:; $(call _grunt,adminUsers)
 _locations:; $(call _grunt,locations)
 _catchments:; $(call _grunt,catchments)
+_facilities:; $(call _grunt,facilities)
 _users:; $(call _grunt,users)
 _concepts:; $(call _grunt,concepts)
 _encounterTypes:; $(call _grunt,encounterTypes)
@@ -35,6 +36,7 @@ deploy-dev-all: create_org _dev _all
 deploy-dev-adminUsers: _dev _adminUsers
 deploy-dev-locations: _dev _locations
 deploy-dev-catchments: _dev _catchments
+deploy-dev-facilities: _dev _facilities
 deploy-dev-users: _dev _users
 deploy-dev-concepts: _dev _concepts
 deploy-dev-encounterTypes: _dev _encounterTypes
@@ -53,6 +55,7 @@ deploy-staging-all: _staging _all
 deploy-staging-adminUsers: _staging _adminUsers
 deploy-staging-locations: _staging _locations
 deploy-staging-catchments: _staging _catchments
+deploy-staging-facilities: _staging _facilities
 deploy-staging-users: _staging _users
 deploy-staging-concepts: _staging _concepts
 deploy-staging-encounterTypes: _staging _encounterTypes
@@ -71,6 +74,7 @@ deploy-prerelease-all: _prerelease _all
 deploy-prerelease-adminUsers: _prerelease _adminUsers
 deploy-prerelease-locations: _prerelease _locations
 deploy-prerelease-catchments: _prerelease _catchments
+deploy-prerelease-facilities: _prerelease _facilities
 deploy-prerelease-users: _prerelease _users
 deploy-prerelease-concepts: _prerelease _concepts
 deploy-prerelease-encounterTypes: _prerelease _encounterTypes
@@ -89,6 +93,7 @@ deploy-uat-all: _uat _all
 deploy-uat-adminUsers: _uat _adminUsers
 deploy-uat-locations: _uat _locations
 deploy-uat-catchments: _uat _catchments
+deploy-uat-facilities: _uat _facilities
 deploy-uat-users: _uat _users
 deploy-uat-concepts: _uat _concepts
 deploy-uat-encounterTypes: _uat _encounterTypes
@@ -107,6 +112,7 @@ deploy-prod-all: _prod _all
 deploy-prod-adminUsers: _prod _adminUsers
 deploy-prod-locations: _prod _locations
 deploy-prod-catchments: _prod _catchments
+deploy-prod-facilities: _prod _facilities
 deploy-prod-users: _prod _users
 deploy-prod-concepts: _prod _concepts
 deploy-prod-encounterTypes: _prod _encounterTypes
