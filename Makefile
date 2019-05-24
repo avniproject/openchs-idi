@@ -21,6 +21,7 @@ _facilities:; $(call _grunt,facilities)
 _users:; $(call _grunt,users)
 _concepts:; $(call _grunt,concepts)
 _encounterTypes:; $(call _grunt,encounterTypes)
+_subjectTypes:; $(call _grunt,subjectTypes)
 _programs:; $(call _grunt,programs)
 _operationalEncounterTypes:; $(call _grunt,operationalEncounterTypes)
 _operationalPrograms:; $(call _grunt,operationalPrograms)
@@ -41,6 +42,7 @@ deploy-dev-facilities: _dev _facilities
 deploy-dev-users: _dev _users
 deploy-dev-concepts: _dev _concepts
 deploy-dev-encounterTypes: _dev _encounterTypes
+deploy-dev-subjectTypes: _dev _subjectTypes
 deploy-dev-programs: _dev _programs
 deploy-dev-operationalEncounterTypes: _dev _operationalEncounterTypes
 deploy-dev-operationalPrograms: _dev _operationalPrograms
@@ -61,6 +63,7 @@ deploy-staging-facilities: _staging _facilities
 deploy-staging-users: _staging _users
 deploy-staging-concepts: _staging _concepts
 deploy-staging-encounterTypes: _staging _encounterTypes
+deploy-staging-subjectTypes: _staging _subjectTypes
 deploy-staging-programs: _staging _programs
 deploy-staging-operationalEncounterTypes: _staging _operationalEncounterTypes
 deploy-staging-operationalPrograms: _staging _operationalPrograms
@@ -81,6 +84,7 @@ deploy-prerelease-facilities: _prerelease _facilities
 deploy-prerelease-users: _prerelease _users
 deploy-prerelease-concepts: _prerelease _concepts
 deploy-prerelease-encounterTypes: _prerelease _encounterTypes
+deploy-prerelease-subjectTypes: _prerelease _subjectTypes
 deploy-prerelease-programs: _prerelease _programs
 deploy-prerelease-operationalEncounterTypes: _prerelease _operationalEncounterTypes
 deploy-prerelease-operationalPrograms: _prerelease _operationalPrograms
@@ -101,6 +105,7 @@ deploy-uat-facilities: _uat _facilities
 deploy-uat-users: _uat _users
 deploy-uat-concepts: _uat _concepts
 deploy-uat-encounterTypes: _uat _encounterTypes
+deploy-uat-subjectTypes: _uat _subjectTypes
 deploy-uat-programs: _uat _programs
 deploy-uat-operationalEncounterTypes: _uat _operationalEncounterTypes
 deploy-uat-operationalPrograms: _uat _operationalPrograms
@@ -121,6 +126,7 @@ deploy-prod-facilities: _prod _facilities
 deploy-prod-users: _prod _users
 deploy-prod-concepts: _prod _concepts
 deploy-prod-encounterTypes: _prod _encounterTypes
+deploy-prod-subjectTypes: _prod _subjectTypes
 deploy-prod-programs: _prod _programs
 deploy-prod-operationalEncounterTypes: _prod _operationalEncounterTypes
 deploy-prod-operationalPrograms: _prod _operationalPrograms
