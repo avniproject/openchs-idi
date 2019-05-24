@@ -13,10 +13,15 @@ class IDI {
     }
 
     postRules(asUser) {
-        return {
-            asUser,
-            run: (files, user) => HttpClient.getToken(user).then(token=> this.rulesConfig.postAllRules(user, files[0], this.serverUrl, token))
-        }
+        const run = (files, user) => {
+            if (!files.length) {
+                this.logger(`-- SKIP: rules`);
+                return Promise.resolve();
+            }
+            return HttpClient.getToken(user)
+                .then(token => this.rulesConfig.postAllRules(user, files[0], this.serverUrl, token));
+        };
+        return {asUser, run};
     }
 
     configure(grunt, configuration, rulesConfig) {
@@ -43,6 +48,7 @@ class IDI {
                 operationalPrograms: req('org-admin', 'POST', 'operationalPrograms'),
                 operationalSubjectTypes: req('org-admin', 'POST', 'operationalSubjectTypes'),
                 users: req('org-admin', 'POST', 'users'),
+                videos: req('org-admin', 'POST', 'videos'),
                 rules: this.postRules('org-admin'),
                 organisationSql: {
                     asUser: 'org-admin', run: () => {
@@ -69,8 +75,8 @@ class IDI {
         grunt.registerMultiTask('deploy', "Everything happens here.", function () {
             const done = this.async();
             if (idi.env !== 'dev') {
-                prompt(idi.env, ()=> deploy(this.target, done), () => idi.logger(`Exiting w/o deployment`));
-                return ;
+                prompt(idi.env, () => deploy(this.target, done), () => idi.logger(`Exiting w/o deployment`));
+                return;
             }
             deploy(this.target, done);
         });
@@ -96,6 +102,10 @@ class IDI {
 
     requestMany(method, endpoint, filepaths, user) {
         const logger = this.logger;
+        if (!filepaths.length) {
+            logger(`++ SKIP: ${endpoint}`);
+            return Promise.resolve();
+        }
         logger(`++ START: ${endpoint}`);
         const url = this.url(endpoint);
         const requestSeq = filepaths.reduce((requestSeq, filepath) => {
@@ -115,8 +125,8 @@ class IDI {
             })
             .catch((err) => {
                 logger(err);
-                const errMessage = err.response && err.response.data && (err.response.data.message?
-                    err.response.data.message: err.response.data);
+                const errMessage = err.response && err.response.data && (err.response.data.message ?
+                    err.response.data.message : err.response.data);
                 logger(errMessage);
                 logger(`++ FAIL: Failed`);
                 throw err;
@@ -127,7 +137,8 @@ class IDI {
         const taskDef = this.grunt.config.get(`deploy.${taskName}`);
         const fileInfo = this.conf.files[taskName];
         const files = this.grunt.util.kindOf(fileInfo) === 'object' ? fileInfo[this.env] : fileInfo;
-        const user = this.conf[taskDef.asUser];
+        const userInfo = this.conf[taskDef.asUser];
+        const user = this.grunt.util.kindOf(userInfo) === 'object' ? userInfo[this.env] : userInfo;
         return taskDef.run(files || [], user);
     }
 
@@ -168,6 +179,7 @@ class IDI {
             'formAdditions',
             'formMappings',
             'checklistDetails',
+            'videos',
             'rules'
         ]
     }

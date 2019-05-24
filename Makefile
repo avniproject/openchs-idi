@@ -30,6 +30,7 @@ _formDeletions:; $(call _grunt,formDeletions)
 _formAdditions:; $(call _grunt,formAdditions)
 _formMappings:; $(call _grunt,formMappings)
 _checklistDetails:; $(call _grunt,checklistDetails)
+_videos:; $(call _grunt,videos)
 _rules:; $(call _grunt,rules)
 
 deploy-dev-all: create_org _dev _all
@@ -49,6 +50,7 @@ deploy-dev-formDeletions: _dev _formDeletions
 deploy-dev-formAdditions: _dev _formAdditions
 deploy-dev-formMappings: _dev _formMappings
 deploy-dev-checklistDetails: _dev _checklistDetails
+deploy-dev-videos: _dev _videos
 deploy-dev-rules: _dev _rules
 
 deploy-staging-all: _staging _all
@@ -68,6 +70,7 @@ deploy-staging-formDeletions: _staging _formDeletions
 deploy-staging-formAdditions: _staging _formAdditions
 deploy-staging-formMappings: _staging _formMappings
 deploy-staging-checklistDetails: _staging _checklistDetails
+deploy-staging-videos: _staging _videos
 deploy-staging-rules: _staging _rules
 
 deploy-prerelease-all: _prerelease _all
@@ -87,6 +90,7 @@ deploy-prerelease-formDeletions: _prerelease _formDeletions
 deploy-prerelease-formAdditions: _prerelease _formAdditions
 deploy-prerelease-formMappings: _prerelease _formMappings
 deploy-prerelease-checklistDetails: _prerelease _checklistDetails
+deploy-prerelease-videos: _prerelease _videos
 deploy-prerelease-rules: _prerelease _rules
 
 deploy-uat-all: _uat _all
@@ -106,6 +110,7 @@ deploy-uat-formDeletions: _uat _formDeletions
 deploy-uat-formAdditions: _uat _formAdditions
 deploy-uat-formMappings: _uat _formMappings
 deploy-uat-checklistDetails: _uat _checklistDetails
+deploy-uat-videos: _uat _videos
 deploy-uat-rules: _uat _rules
 
 deploy-prod-all: _prod _all
@@ -125,6 +130,7 @@ deploy-prod-formDeletions: _prod _formDeletions
 deploy-prod-formAdditions: _prod _formAdditions
 deploy-prod-formMappings: _prod _formMappings
 deploy-prod-checklistDetails: _prod _checklistDetails
+deploy-prod-videos: _prod _videos
 deploy-prod-rules: _prod _rules
 
 create_org:; psql -U$(su) openchs < create_organisation.sql
