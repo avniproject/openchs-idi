@@ -166,13 +166,13 @@ class IDI {
     static get allTasks() {
         return [
             'adminUsers',
+            'addressLevelTypes',
             'locations',
             'catchments',
             'facilities',
             'users',
             'concepts',
             'subjectTypes',
-            'addressLevelTypes',
             'programs',
             'encounterTypes',
             'operationalEncounterTypes',
