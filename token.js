@@ -1,11 +1,26 @@
+var axios = require('axios');
 var Cognito = require('amazon-cognito-identity-js');
 global.navigator = () => null;
 
 const tokenCache = {};
 
-module.exports = function (config) {
-    const {poolId, clientId, user: username, password} = config;
+module.exports = (config) => {
+    const {serverUrl, user: username, password} = config;
     if (tokenCache[username]) return Promise.resolve(tokenCache[username]);
+
+    return getCognitoDetails(serverUrl).then((details) => {
+        const {poolId, clientId} = details;
+        return getIdToken({username, password, poolId, clientId});
+    });
+};
+
+const getCognitoDetails = (serverUrl) => {
+    return axios.get(serverUrl + '/cognito-details', {'Content-Type': 'application/json'})
+        .then(res=>res.data);
+};
+
+const getIdToken = (config) => {
+    const {poolId, clientId, username, password} = config;
 
     var authenticationDetails = new Cognito.AuthenticationDetails({
         Username: username,

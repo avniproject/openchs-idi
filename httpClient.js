@@ -41,8 +41,7 @@ class HttpClient {
     static getToken(user) {
         if ((HttpClient.env === 'dev')) return Promise.resolve('');
         return getToken({
-            poolId: HttpClient.secrets.poolId,
-            clientId: HttpClient.secrets.clientId,
+            serverUrl: HttpClient.secrets.serverUrl,
             user: user,
             password: HttpClient.secrets.password[user]
         });
