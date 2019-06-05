@@ -24,10 +24,14 @@ class IDI {
         return {asUser, run};
     }
 
-    configure(grunt, configuration, rulesConfig) {
+    configure(grunt, conf, rulesConfig) {
         const req = this.req.bind(this);
         this.grunt = grunt;
-        this.conf = configuration;
+        this.conf = Object.assign({}, conf);
+        if (this.conf.secrets) {
+            console.assert('string' === typeof this.conf.secrets, "IDI configuration error: 'secrets' should be a filepath type String");
+            this.conf.secrets = this.grunt.file.readJSON(this.conf.secrets);
+        }
         this.rulesConfig = rulesConfig;
         HttpClient.load(this.conf.secrets, this.env);
         grunt.initConfig({
