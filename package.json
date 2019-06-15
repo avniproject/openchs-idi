@@ -8,9 +8,11 @@
     "httpClient.js",
     "prompt.js",
     "IDI.js",
-    "Makefile"
+    "makefile.js"
   ],
-  "scripts": {},
+  "scripts": {
+    "postinstall": "node makefile.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/OpenCHS/openchs-idi.git"

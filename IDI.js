@@ -64,7 +64,7 @@ class IDI {
             }
         });
 
-        ['dev', 'staging', 'prod', 'uat', 'prerelease'].forEach((env) => {
+        IDI.ENVs.forEach((env) => {
             grunt.registerTask(env, `Use env: ${env.toUpperCase()}`, () => grunt.option('target', env));
         });
 
@@ -190,6 +190,16 @@ class IDI {
             'videos',
             'rules'
         ]
+    }
+
+    static get ENVs() {
+        return [
+            'dev',
+            'staging',
+            'uat',
+            'prerelease',
+            'prod',
+        ];
     }
 }
 
