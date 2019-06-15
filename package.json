@@ -8,6 +8,7 @@
     "httpClient.js",
     "prompt.js",
     "IDI.js",
+    "template.mk",
     "makefile.js"
   ],
   "scripts": {
