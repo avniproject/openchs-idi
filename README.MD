@@ -9,6 +9,29 @@ Both are needed. Makefile provided by openchs-idi is a thin wrapper to provide q
 
 To Install the sdk in an Implementation:
 ```
-yarn add github:openchs/openchs-idi#sdkcommitID             -- sdkcommitID = latest commit in master branch
-yarn add github:openchs/rules-config#rulescommitID          -- rulescommitID = latest commit in build branch
+npm add github:openchs/openchs-idi#sdkcommitID             -- sdkcommitID = latest commit in master branch
+npm add github:openchs/rules-config#rulescommitID          -- rulescommitID = latest commit in build branch
 ```
+
+Report generation:
+```
+make generate-reports [...options]
+```
+
+Options:
+
+|Option|Values|Default|Description|
+|-|-|-|-|
+|report-program|OperationalProgramName|Mandatory| Name of the Program for which all the reports to be generated |
+|report-encounter|OperationalEncounterType|null| Name of the Encounter for which all the reports to be generated. If not mentioned, reports for all the Encounters of the given Program will be generated. |
+|report-spreadout|true \| false|false| Whether or not to show multiselect Observations in multiple columns with Yes\|No as answers. Use true for multiple cols|
+|report-item-type|Registration \| ProgramEncounter|ProgramEncounter| ProgramEncounter= Generate reports for prorgrams and encounter, Registration= generate a single report for registration.|
+
+
+```
+# ex:
+make generate-reports report-program=Pregnancy report-item-type=ProgramEncounter
+# This command will generate sql files in the ./tmp directory from where it is called.
+```
+
+
