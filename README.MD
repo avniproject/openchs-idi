@@ -7,18 +7,19 @@ Example Implementation:
 
 Both are needed. Makefile provided by openchs-idi is a thin wrapper to provide quick bash auto complete.
 
-To Install the sdk in an Implementation:
+## To Install the sdk in an Implementation:
 ```
 npm add github:openchs/openchs-idi#sdkcommitID             -- sdkcommitID = latest commit in master branch
 npm add github:openchs/rules-config#rulescommitID          -- rulescommitID = latest commit in build branch
 ```
 
-Report generation:
+## Reports generation:
+Make sure to set variable `org_admin_name:=` in the implementation Makefile after including IDI makefile.
 ```
 make generate-reports [...options]
 ```
 
-Options:
+### Options:
 
 |Option|Values|Default|Description|
 |-|-|-|-|
@@ -27,11 +28,9 @@ Options:
 |report-spreadout|true \| false|false| Whether or not to show multiselect Observations in multiple columns with Yes\|No as answers. Use true for multiple cols|
 |report-item-type|Registration \| ProgramEncounter|ProgramEncounter| ProgramEncounter= Generate reports for prorgrams and encounter, Registration= generate a single report for registration.|
 
+### Example:
+This command will generate sql files in the ./tmp directory from where it is called.
 
 ```
-# ex:
 make generate-reports report-program=Pregnancy report-item-type=ProgramEncounter
-# This command will generate sql files in the ./tmp directory from where it is called.
 ```
-
-
