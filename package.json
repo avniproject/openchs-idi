@@ -9,7 +9,9 @@
     "prompt.js",
     "IDI.js",
     "template.mk",
-    "makefile.js"
+    "makefile.js",
+    "reports/reports.mk",
+    "reports/writeToIndividualFiles.js"
   ],
   "scripts": {
     "postinstall": "node makefile.js"

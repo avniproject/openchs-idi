@@ -7,3 +7,5 @@ su:=$(shell id -un)
 
 create_org:; psql -U$(su) -d openchs < create_organisation.sql
 create_views:; psql -U$(su) -d openchs < create_views.sql
+
+-include ./node_modules/openchs-idi/reports/reports.mk
