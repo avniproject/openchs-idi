@@ -56,6 +56,8 @@ class IDI {
                 adolescentConfig: req('org-admin', 'POST', 'adolescent/config'),
                 users: req('org-admin', 'POST', 'users'),
                 videos: req('org-admin', 'POST', 'videos'),
+                identifierSource: req('org-admin', 'POST', 'identifierSource '),
+                identifierUserAssignments: req('org-admin', 'POST', 'identifierUserAssignments'),
                 rules: this.postRules('org-admin'),
                 organisationSql: {
                     asUser: 'org-admin', run: () => {
@@ -190,7 +192,9 @@ class IDI {
             'formMappings',
             'checklistDetails',
             'videos',
-            'rules'
+            'rules',
+            'identifierSource',
+            'identifierUserAssignments'
         ]
     }
 
