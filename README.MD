@@ -34,3 +34,9 @@ This command will generate sql files in the ./tmp directory from where it is cal
 ```
 make generate-reports report-program=Pregnancy report-item-type=ProgramEncounter
 ```
+
+for Registration report
+
+```
+make generate-reports report-item-type=Registration
+```
