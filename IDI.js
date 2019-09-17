@@ -59,6 +59,8 @@ class IDI {
                 videos: req('org-admin', 'POST', 'videos'),
                 identifierSource: req('org-admin', 'POST', 'identifierSource '),
                 identifierUserAssignments: req('org-admin', 'POST', 'identifierUserAssignments'),
+                translations: req('org-admin', 'POST', 'translation'),
+                organisationConfig: req('org-admin', 'POST', 'organisationConfig'),
                 rules: this.postRules('org-admin'),
                 organisationSql: {
                     asUser: 'org-admin', run: () => {
@@ -196,7 +198,9 @@ class IDI {
             'videos',
             'rules',
             'identifierSource',
-            'identifierUserAssignments'
+            'identifierUserAssignments',
+            'translations',
+            'organisationConfig'
         ]
     }
 
