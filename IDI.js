@@ -61,6 +61,7 @@ class IDI {
                 identifierUserAssignments: req('org-admin', 'POST', 'identifierUserAssignments'),
                 translations: req('org-admin', 'POST', 'translation'),
                 organisationConfig: req('org-admin', 'POST', 'organisationConfig'),
+                platformTranslation: req('org-admin', 'POST', 'platformTranslation'),
                 rules: this.postRules('org-admin'),
                 organisationSql: {
                     asUser: 'org-admin', run: () => {
@@ -200,7 +201,8 @@ class IDI {
             'identifierSource',
             'identifierUserAssignments',
             'translations',
-            'organisationConfig'
+            'organisationConfig',
+            'platformTranslation'
         ]
     }
 
