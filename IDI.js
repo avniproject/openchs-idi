@@ -36,6 +36,7 @@ class IDI {
         HttpClient.load(this.conf.secrets, this.env);
         grunt.initConfig({
             deploy: {
+                organisation: req('chs-admin', 'POST', 'organisation'),
                 adminUsers: req('chs-admin', 'POST', 'users'),
                 forms: req('org-admin', 'POST', 'forms'),
                 formDeletions: req('org-admin', 'DELETE', 'forms'),
@@ -64,10 +65,6 @@ class IDI {
                 organisationConfig: req('org-admin', 'POST', 'organisationConfig'),
                 platformTranslation: req('org-admin', 'POST', 'platformTranslation'),
                 rules: this.postRules('org-admin'),
-                organisationSql: {
-                    asUser: 'org-admin', run: () => {
-                    }
-                },
                 all: '',
             }
         });
@@ -177,7 +174,9 @@ class IDI {
 
     static get allTasks() {
         return [
+            'organisation',
             'adminUsers',
+            'organisationConfig',
             'addressLevelTypes',
             'locations',
             'catchments',
@@ -199,12 +198,11 @@ class IDI {
             'formMappings',
             'checklistDetails',
             'videos',
-            'rules',
             'identifierSource',
             'identifierUserAssignments',
             'translations',
-            'organisationConfig',
-            'platformTranslation'
+            'platformTranslation',
+            'rules',
         ]
     }
 
