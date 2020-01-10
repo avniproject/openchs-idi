@@ -38,6 +38,7 @@ const getIdToken = (config) => {
             },
             onFailure: function (error) {
                 rej("Authentication failure. Check credentials. " + "PoolId=" + poolId + " ClientId=" + clientId + " Username=" + username + " Password=" + password);
+                console.log(error);
             },
             newPasswordRequired: function (_userAttributes, requiredAttributes) {
                 const userAttributes = Object.assign({}, _userAttributes);
