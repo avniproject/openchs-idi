@@ -1,12 +1,14 @@
 
 org_admin_name:=
+report-subject:=
 report-program:=
 report-encounter:=
 report-spreadout:=false
-#report-item-type Registration|ProgramEncounter
+#report-item-type Registration|ProgramEncounter|Encounter
 report-item-type:=ProgramEncounter
 
 _reprot-post-body:={ \
+	"subjectType": $(if $(report-subject),"$(report-subject)",null), \
 	"program": $(if $(report-program),"$(report-program)",null), \
 	"encounterType": $(if $(report-encounter),"$(report-encounter)",null), \
 	"spreadMultiSelectObs": $(report-spreadout), \
