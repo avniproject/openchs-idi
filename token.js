@@ -1,5 +1,5 @@
-var axios = require('axios');
-var Cognito = require('amazon-cognito-identity-js');
+const axios = require('axios');
+const Cognito = require('amazon-cognito-identity-js');
 global.navigator = () => null;
 
 const tokenCache = {};
@@ -9,29 +9,29 @@ module.exports = (config) => {
     if (tokenCache[username]) return Promise.resolve(tokenCache[username]);
 
     return getCognitoDetails(serverUrl).then((details) => {
-        const {poolId, clientId} = details;
+        const {poolId, clientId} = details["cognito"];
         return getIdToken({username, password, poolId, clientId});
     });
 };
 
 const getCognitoDetails = (serverUrl) => {
-    return axios.get(serverUrl + '/cognito-details', {'Content-Type': 'application/json'})
-        .then(res=>res.data);
+    return axios.get(serverUrl + '/idp-details', {"Content-Type": "application/json"})
+        .then(res => res.data);
 };
 
 const getIdToken = (config) => {
     const {poolId, clientId, username, password} = config;
 
-    var authenticationDetails = new Cognito.AuthenticationDetails({
+    const authenticationDetails = new Cognito.AuthenticationDetails({
         Username: username,
         Password: password
     });
-    var userPool = new Cognito.CognitoUserPool({
+    const userPool = new Cognito.CognitoUserPool({
         UserPoolId: poolId,
         ClientId: clientId
     });
-    var cognitoUser = new Cognito.CognitoUser({Username: username, Pool: userPool});
-    return new Promise((res,rej)=>{
+    const cognitoUser = new Cognito.CognitoUser({Username: username, Pool: userPool});
+    return new Promise((res, rej) => {
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: function (result) {
                 res(result.getIdToken().getJwtToken());
